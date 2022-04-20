@@ -40,7 +40,7 @@ class ClassRoomController extends Controller
     public function show($id)
     {
 
-        return new ClassRoomResource(ClassRoom::find($id));
+        return new ClassRoomResource(ClassRoom::findOrFail($id));
     }
 
     /**
