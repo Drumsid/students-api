@@ -17,4 +17,14 @@ class ClassRoom extends Model
     {
         return $this->hasMany(Student::class);
     }
+
+    public function unpinStudents($students)
+    {
+        foreach ($students as $student) {
+            $student->update([
+                "name" => $student->name,
+                "class_room_id" => null,
+            ]);
+        }
+    }
 }

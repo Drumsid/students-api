@@ -26,13 +26,13 @@ class StudentRequest extends FormRequest
         if ($this->isMethod('PUT')) {
             return [
                 "name" => "required|min:3|max:50",
-                "class_room_id" => "required|numeric|exists:class_rooms,id",
+                "class_room_id" => "nullable|numeric|exists:class_rooms,id",
             ];
         }
         return [
             "name" => "required|min:3|max:50",
             "email" => "required|email|unique:students,email",
-            "class_room_id" => "required|numeric|exists:class_rooms,id",
+            "class_room_id" => "nullable|numeric|exists:class_rooms,id",
         ];
     }
 }

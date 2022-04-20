@@ -62,6 +62,9 @@ class ClassRoomController extends Controller
      */
     public function destroy(ClassRoom $class)
     {
+        if ($class->students) {
+            $class->unpinStudents($class->students);
+        }
         $class->delete();
         return response(null, Response::HTTP_NO_CONTENT);
     }

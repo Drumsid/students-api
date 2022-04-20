@@ -17,8 +17,11 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string("name", 50);
             $table->string("email")->unique();
-            $table->foreignId('class_room_id')->constrained()
+            $table->unsignedBigInteger('class_room_id')->nullable();
+            $table->foreign('class_room_id')->references('id')->on('class_rooms')
                 ->onUpdate('cascade')->onDelete('cascade');
+//            $table->foreignId('class_room_id')->constrained()
+//                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
