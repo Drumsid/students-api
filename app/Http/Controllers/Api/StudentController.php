@@ -37,7 +37,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        //
+        return Student::find($id);
     }
 
     /**
