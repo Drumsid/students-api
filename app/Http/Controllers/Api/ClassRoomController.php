@@ -21,6 +21,10 @@ class ClassRoomController extends Controller
     }
 
 
+    /**
+     * @param ClassRoomRequest $request
+     * @return ClassRoomResource
+     */
     public function store(ClassRoomRequest $request)
     {
         $class = ClassRoom::create($request->validated());
@@ -38,24 +42,19 @@ class ClassRoomController extends Controller
         return new ClassRoomResource($class);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ClassRoomRequest $request
+     * @param ClassRoom $class
+     * @return ClassRoomResource
      */
+    public function update(ClassRoomRequest $request, ClassRoom $class)
+    {
+        $class->update($request->validated());
+        return new ClassRoomResource($class);
+    }
+
+
     public function destroy($id)
     {
         //
