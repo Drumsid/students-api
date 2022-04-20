@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ClassRoomRequest;
 use App\Http\Resources\ClassRoomResource;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
@@ -19,15 +20,11 @@ class ClassRoomController extends Controller
         return ClassRoomResource::collection($students);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(ClassRoomRequest $request)
     {
-        //
+        $class = ClassRoom::create($request->validated());
+        return new ClassRoomResource($class);
     }
 
 

@@ -10,7 +10,7 @@ class ClassRoom extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', "student_id"
+        'title'
     ];
 
     public function students()
