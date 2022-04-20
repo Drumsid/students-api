@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class StudentController extends Controller
      */
     public function index()
     {
-        return Student::all();
+        return StudentResource::collection(Student::all());
     }
 
     /**
@@ -37,7 +38,7 @@ class StudentController extends Controller
      */
     public function show($id)
     {
-        return Student::find($id);
+        return new StudentResource(Student::find($id));
     }
 
     /**
