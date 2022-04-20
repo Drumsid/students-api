@@ -23,6 +23,11 @@ class ClassRoomRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('PUT')) {
+            return [
+                "title" => "required|min:3|max:100|unique:class_rooms,title" . $this->class->id
+            ];
+        }
         return [
             "title" => "required|min:3|max:100|unique:class_rooms,title"
         ];
