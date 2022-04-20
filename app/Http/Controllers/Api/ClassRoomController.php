@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 
 class ClassRoomController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
@@ -31,16 +30,15 @@ class ClassRoomController extends Controller
         //
     }
 
+
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param ClassRoom $class
+     * @return ClassRoomResource
      */
-    public function show($id)
+    public function show(ClassRoom $class)
     {
 
-        return new ClassRoomResource(ClassRoom::findOrFail($id));
+        return new ClassRoomResource($class);
     }
 
     /**
