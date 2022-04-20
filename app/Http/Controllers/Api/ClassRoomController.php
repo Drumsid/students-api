@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ClassRoomResource;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class ClassRoomController extends Controller
      */
     public function index()
     {
-        return ClassRoom::with("students")->get();
+        $students = ClassRoom::with("students")->get();
+        return ClassRoomResource::collection($students);
     }
 
     /**
@@ -37,7 +39,8 @@ class ClassRoomController extends Controller
      */
     public function show($id)
     {
-        return ClassRoom::find($id);
+
+        return new ClassRoomResource(ClassRoom::find($id));
     }
 
     /**
