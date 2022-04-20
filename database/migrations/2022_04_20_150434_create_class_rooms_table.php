@@ -16,8 +16,6 @@ class CreateClassRoomsTable extends Migration
         Schema::create('class_rooms', function (Blueprint $table) {
             $table->id();
             $table->string("title", 100)->unique();
-            $table->foreignId('student_id')->constrained()
-                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

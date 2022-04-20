@@ -10,6 +10,6 @@ class ClassRoomController extends Controller
 {
     public function index()
     {
-        return ClassRoom::all();
+        return ClassRoom::with("students")->get();
     }
 }

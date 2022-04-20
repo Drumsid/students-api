@@ -17,6 +17,8 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string("name", 50);
             $table->string("email")->unique();
+            $table->foreignId('class_room_id')->constrained()
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }

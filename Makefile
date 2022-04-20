@@ -17,3 +17,6 @@ install:
 bash:
 	 docker exec -it alef-php-fpm  bash
 
+seed:
+	docker exec -it alef-php-fpm php artisan migrate:fresh --seed
+

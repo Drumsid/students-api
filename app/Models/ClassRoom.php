@@ -12,4 +12,9 @@ class ClassRoom extends Model
     protected $fillable = [
         'title', "student_id"
     ];
+
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

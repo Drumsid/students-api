@@ -12,4 +12,9 @@ class Student extends Model
     protected $fillable = [
         'name', "email"
     ];
+
+    public function classRoom()
+    {
+        return $this->belongsTo(ClassRoom::class);
+    }
 }
