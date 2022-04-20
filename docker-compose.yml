@@ -1,0 +1,39 @@
+version: '3.0'
+
+services:
+  nginx:
+    build:
+      context: ./docker/nginx
+    volumes:
+      - .:/project
+    container_name: alef-nginx
+    depends_on:
+      - php-fpm
+    ports:
+      - "8088:80"
+
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+    volumes:
+      - .:/project
+    container_name: alef-php-fpm
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: alef-postgres
+    image: postgres:12
+    volumes:
+      - ./docker/postgres:/var/lib/postgresql/data
+#    restart: always
+    environment:
+      POSTGRES_DB: test_db
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: secret
+    ports:
+        - "35432:5432"
+
+
+
+
