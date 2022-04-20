@@ -7,6 +7,7 @@ use App\Http\Requests\ClassRoomRequest;
 use App\Http\Resources\ClassRoomResource;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class ClassRoomController extends Controller
 {
@@ -55,8 +56,13 @@ class ClassRoomController extends Controller
     }
 
 
-    public function destroy($id)
+    /**
+     * @param ClassRoom $class
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
+    public function destroy(ClassRoom $class)
     {
-        //
+        $class->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
