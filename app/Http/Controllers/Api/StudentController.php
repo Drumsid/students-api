@@ -7,6 +7,7 @@ use App\Http\Requests\StudentRequest;
 use App\Http\Resources\StudentResource;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 /**
  *
@@ -36,34 +37,34 @@ class StudentController extends Controller
 
 
     /**
-     * @param $id
+     * @param Student $student
      * @return StudentResource
      */
-    public function show($id)
+    public function show(Student $student)
     {
-        return new StudentResource(Student::findOrFail($id));
+        return new StudentResource($student);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param StudentRequest $request
+     * @param Student $student
+     * @return StudentResource
      */
-    public function destroy($id)
+    public function update(StudentRequest $request, Student $student)
     {
-        //
+        $student->update($request->validated());
+        return new StudentResource($student);
+    }
+
+
+    /**
+     * @param Student $student
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
+    public function destroy(Student $student)
+    {
+        $student->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }

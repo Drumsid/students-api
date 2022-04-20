@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\ValidationException;
 
 class StudentRequest extends FormRequest
 {
@@ -27,7 +25,7 @@ class StudentRequest extends FormRequest
     {
         return [
             "name" => "required|min:3|max:50",
-            "email" => "required|email|unique:students,email",
+            "email" => "required|email|unique:students,email," . $this->student->id,
             "class_room_id" => "required|numeric|exists:class_rooms,id",
         ];
     }
