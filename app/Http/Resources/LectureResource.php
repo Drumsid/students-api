@@ -18,7 +18,7 @@ class LectureResource extends JsonResource
             "id" => $this->id,
             "topic" => $this->topic,
             "description" => $this->description,
-            "class" => $this->classRoom ? $this->classRoom->title : null,
+            "class" => $this->classRoom,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

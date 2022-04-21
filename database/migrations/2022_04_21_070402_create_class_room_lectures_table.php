@@ -13,7 +13,7 @@ class CreateClassRoomLecturesTable extends Migration
      */
     public function up()
     {
-        Schema::create('class_room_lectures', function (Blueprint $table) {
+        Schema::create('class_room_lecture', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('class_room_id');
             $table->unsignedBigInteger('lecture_id');
