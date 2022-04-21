@@ -29,6 +29,7 @@ class ClassRoomController extends Controller
     public function store(ClassRoomRequest $request)
     {
         $class = ClassRoom::create($request->validated());
+        $class->plan()->sync($request->plan);
         return new ClassRoomResource($class);
     }
 
