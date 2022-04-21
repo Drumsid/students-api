@@ -53,6 +53,7 @@ class ClassRoomController extends Controller
     public function update(ClassRoomRequest $request, ClassRoom $class)
     {
         $class->update($request->validated());
+        $class->plan()->sync($request->plan);
         return new ClassRoomResource($class);
     }
 
