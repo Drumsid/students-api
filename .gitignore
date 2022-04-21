@@ -16,3 +16,4 @@ yarn-error.log
 
 /docker/postgres
 tz.txt
+questions.txt
