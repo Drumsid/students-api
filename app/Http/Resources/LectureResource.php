@@ -18,7 +18,9 @@ class LectureResource extends JsonResource
             "id" => $this->id,
             "topic" => $this->topic,
             "description" => $this->description,
-            "class" => $this->classRoom,
+            "class" => $this->classRoom->pluck("title")->join(" | "),
+            // надо получить всех студентов кто был на этой лекции
+//            "students" => $this->classRoom->pluck("title")->join(" | "),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
