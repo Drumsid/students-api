@@ -7,6 +7,7 @@ use App\Http\Requests\LectureRequest;
 use App\Http\Resources\LectureResource;
 use App\Models\Lecture;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class LectureController extends Controller
 {
@@ -36,14 +37,10 @@ class LectureController extends Controller
         return new LectureResource($lecture);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+
+    public function destroy(Lecture $lecture)
     {
-        //
+        $lecture->delete();
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
