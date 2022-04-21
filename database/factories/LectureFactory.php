@@ -14,7 +14,8 @@ class LectureFactory extends Factory
     public function definition()
     {
         return [
-            //
+            "topic" => $this->faker->unique()->sentence(3),
+            "description" => $this->faker->paragraph(2),
         ];
     }
 }
