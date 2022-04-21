@@ -15,8 +15,10 @@ class LectureResource extends JsonResource
     public function toArray($request)
     {
         return [
+            "id" => $this->id,
             "topic" => $this->topic,
             "description" => $this->description,
+            "class" => $this->classRoom ? $this->classRoom->title : null,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

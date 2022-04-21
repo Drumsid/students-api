@@ -15,26 +15,17 @@ class LectureController extends Controller
         return LectureResource::collection(Lecture::all());
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $lecture = Lecture::create($request->all());
+        return new LectureResource($lecture);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function show(Lecture $lecture)
     {
-        //
+        return new LectureResource($lecture);
     }
 
     /**
