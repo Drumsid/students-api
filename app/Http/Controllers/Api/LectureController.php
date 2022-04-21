@@ -12,12 +12,19 @@ use Illuminate\Http\Response;
 class LectureController extends Controller
 {
 
+    /**
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function index()
     {
         return LectureResource::collection(Lecture::all());
     }
 
 
+    /**
+     * @param LectureRequest $request
+     * @return LectureResource
+     */
     public function store(LectureRequest $request)
     {
         $lecture = Lecture::create($request->validated());
@@ -25,12 +32,21 @@ class LectureController extends Controller
     }
 
 
+    /**
+     * @param Lecture $lecture
+     * @return LectureResource
+     */
     public function show(Lecture $lecture)
     {
         return new LectureResource($lecture);
     }
 
 
+    /**
+     * @param LectureRequest $request
+     * @param Lecture $lecture
+     * @return LectureResource
+     */
     public function update(LectureRequest $request, Lecture $lecture)
     {
         $lecture->update($request->validated());
@@ -38,6 +54,10 @@ class LectureController extends Controller
     }
 
 
+    /**
+     * @param Lecture $lecture
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response
+     */
     public function destroy(Lecture $lecture)
     {
         $lecture->delete();
