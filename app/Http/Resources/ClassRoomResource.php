@@ -17,7 +17,8 @@ class ClassRoomResource extends JsonResource
         return [
             "id" => $this->id,
             "title" => $this->title,
-            "students" => StudentResource::collection($this->students),
+            "students" => $this->students->pluck('name')->join(' | '),
+//            "students" => StudentResource::collection($this->students),
             "plan" => $this->plan,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
