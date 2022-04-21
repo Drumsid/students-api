@@ -29,16 +29,11 @@ class LectureController extends Controller
         return new LectureResource($lecture);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
 
+    public function update(LectureRequest $request, Lecture $lecture)
+    {
+        $lecture->update($request->validated());
+        return new LectureResource($lecture);
     }
 
     /**

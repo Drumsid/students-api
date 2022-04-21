@@ -23,6 +23,12 @@ class LectureRequest extends FormRequest
      */
     public function rules()
     {
+        if ($this->isMethod('PUT')) {
+            return [
+                "topic" => "required|min:3|max:255|unique:lectures,topic," . $this->lecture->id,
+                "description" => "required|min:3|max:255"
+            ];
+        }
         return [
             "topic" => "required|min:3|max:255|unique:lectures,topic",
             "description" => "required|min:3|max:255"
