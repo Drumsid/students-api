@@ -18,6 +18,11 @@ class ClassRoom extends Model
         return $this->hasMany(Student::class);
     }
 
+    public function plan()
+    {
+        return $this->belongsToMany(Lecture::class);
+    }
+
     public function unpinStudents($students)
     {
         foreach ($students as $student) {
