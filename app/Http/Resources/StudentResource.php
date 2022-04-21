@@ -19,7 +19,8 @@ class StudentResource extends JsonResource
             "name" => $this->name,
             "email" => $this->email,
             "class_room" => $this->classRoom ? $this->classRoom->title : null,
-//            "class_room" => $this->classRoom->title,
+            "lectures" => $this->classRoom ? $this->classRoom->plan->pluck('topic')->join('| ') : null,
+//            "lectures" => $this->classRoom ? LectureResource::collection($this->classRoom->plan) : null,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
